@@ -11,6 +11,7 @@ let gkBox = document.querySelector('#gk-checkbox')
 let sportsBox = document.querySelector('#sports-checkbox')
 let geoBox = document.querySelector('#geo-checkbox')
 let questionArea = document.querySelector('.question-list')
+let troubleshooter = document.querySelector('.troubleshooter')
 let startButton = document.querySelector('.start-button')
 
 //function to determine difficulty selected
@@ -37,7 +38,22 @@ let getCategory = () => {
   }
 }
 
+//function that maps questions and answers to trivia.html
+
+//map works displaying on the same page, but throws error when trying to open map on trivia.html. Need to figure out how to connect the two HTML pages
+
+const mapQuestions = (questions) => {
+  questions.map((currentQuestion) => {
+    let questionText = currentQuestion.question
+    let questionHeader = document.createElement('h3')
+    questionHeader.innerText = questionText
+    questionArea.appendChild(questionHeader)
+    //troubleshooter.appendChild(questionHeader) //area for questions on main page for troubleshooting purposes
+  })
+}
+
 //This makes the appropriate API call for difficulty and topic
+
 startButton.onclick = async function () {
   let difficultyOption = getDifficulty()
   let category = getCategory()
@@ -46,4 +62,7 @@ startButton.onclick = async function () {
   )
   let questionsArray = response.data.results
   console.log(questionsArray)
+  mapQuestions(questionsArray)
+  //location.href = '/trivia.html' //opens Trivia Time in same tab
+  window.open('/trivia.html', '_blank') //opens Trivia Time in new window for testing purposes
 }
