@@ -1,0 +1,34 @@
+body{
+  background-color: aqua;
+}
+
+h1{
+  text-align: center;
+}
+
+main{
+  display: grid;
+  grid-template-areas: 
+  "a a"
+  "b c"
+  "d d"
+  ;
+}
+
+input{
+  grid-area: a;
+}
+
+#difficulty-container{
+  grid-area: b;
+}
+
+#topic-container{
+  grid-area: c;
+}
+
+.start-button{
+  grid-area: d;
+  justify-content: center;
+  margin: auto;
+}
