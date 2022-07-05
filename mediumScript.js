@@ -8,6 +8,7 @@ let sportsBox = document.querySelector('#medium-sports-checkbox')
 let geoBox = document.querySelector('#medium-geo-checkbox')
 let mediumQuestionArea = document.querySelector('.medium-question-list')
 let mediumStartButton = document.querySelector('#medium-start')
+let scoreboardHeader = document.querySelector('.scoreboard')
 
 //function that determines category
 
@@ -21,9 +22,16 @@ let getCategory = () => {
   }
 }
 
+//Function that updates scoreboard
+
+let updateScoreboard = (score) => {
+  scoreboardHeader.innerText = `Current Score: ${score}`
+}
+
 //map works displaying on the same page, but throws error when trying to open map on trivia.html. Need to figure out how to connect the two HTML pages
 
 const mapQuestions = (questions) => {
+  let score = 0
   questions.map((currentQuestion) => {
     //assigns values from API array to usable variables
     let questionText = currentQuestion.question
@@ -32,24 +40,47 @@ const mapQuestions = (questions) => {
     let wrongAnswer2Value = currentQuestion.incorrect_answers[1]
     let wrongAnswer3Value = currentQuestion.incorrect_answers[2]
     //creates DOM elements for answers/questions
-    let correctAnswer = document.createElement('p')
-    let wrongAnswer1 = document.createElement('p')
-    let wrongAnswer2 = document.createElement('p')
-    let wrongAnswer3 = document.createElement('p')
+    let correctAnswer = document.createElement('button')
+    let wrongAnswer1 = document.createElement('button')
+    let wrongAnswer2 = document.createElement('button')
+    let wrongAnswer3 = document.createElement('button')
     let questionHeader = document.createElement('h3')
+    let displayCorrectResult = document.createElement('p')
+    let displayWrongResult = document.createElement('p')
     //assigns API values to the created DOM elements
     correctAnswer.innerText = correctAnswerValue
     wrongAnswer1.innerText = wrongAnswer1Value
     wrongAnswer2.innerText = wrongAnswer2Value
     wrongAnswer3.innerText = wrongAnswer3Value
     questionHeader.innerText = questionText
+    displayCorrectResult.innerText = 'Congratulations! Thats the right answer!'
+    displayWrongResult.innerText = `That's the wrong answer. Try again next time.`
+    displayCorrectResult.classList.add('answer-check')
+    displayWrongResult.classList.add('answer-check')
     //appends new DOM elements to appropriate section in HTML
     mediumQuestionArea.appendChild(questionHeader)
     mediumQuestionArea.appendChild(wrongAnswer1)
     mediumQuestionArea.appendChild(wrongAnswer3)
     mediumQuestionArea.appendChild(correctAnswer)
     mediumQuestionArea.appendChild(wrongAnswer2)
+    mediumQuestionArea.appendChild(displayCorrectResult)
+    mediumQuestionArea.appendChild(displayWrongResult)
+    //Event Listeners to display right or wrong answers
+    correctAnswer.addEventListener('click', () => {
+      displayCorrectResult.classList.remove('answer-check')
+      score++
+    })
+    wrongAnswer1.addEventListener('click', () => {
+      displayWrongResult.classList.remove('answer-check')
+    })
+    wrongAnswer2.addEventListener('click', () => {
+      displayWrongResult.classList.remove('answer-check')
+    })
+    wrongAnswer3.addEventListener('click', () => {
+      displayWrongResult.classList.remove('answer-check')
+    })
   })
+  return score
 }
 
 //This makes the appropriate API call for difficulty and topic
@@ -62,5 +93,6 @@ mediumStartButton.addEventListener('click', async function () {
   let questionsArray = response.data.results
   console.log(questionsArray)
 
-  mapQuestions(questionsArray)
+  let currentScore = mapQuestions(questionsArray)
+  updateScoreboard(currentScore)
 })
