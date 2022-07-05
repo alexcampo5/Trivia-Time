@@ -6,7 +6,7 @@
 let gkBox = document.querySelector('#easy-gk-checkbox')
 let sportsBox = document.querySelector('#easy-sports-checkbox')
 let geoBox = document.querySelector('#easy-geo-checkbox')
-let questionArea = document.querySelector('.question-list')
+let easyQuestionArea = document.querySelector('.easy-question-list')
 let easyStartButton = document.querySelector('#easy-start')
 
 //function that determines category
@@ -25,10 +25,30 @@ let getCategory = () => {
 
 const mapQuestions = (questions) => {
   questions.map((currentQuestion) => {
+    //assigns values from API array to usable variables
     let questionText = currentQuestion.question
+    let correctAnswerValue = currentQuestion.correct_answer
+    let wrongAnswer1Value = currentQuestion.incorrect_answers[0]
+    let wrongAnswer2Value = currentQuestion.incorrect_answers[1]
+    let wrongAnswer3Value = currentQuestion.incorrect_answers[2]
+    //creates DOM elements for answers/questions
+    let correctAnswer = document.createElement('p')
+    let wrongAnswer1 = document.createElement('p')
+    let wrongAnswer2 = document.createElement('p')
+    let wrongAnswer3 = document.createElement('p')
     let questionHeader = document.createElement('h3')
+    //assigns API values to the created DOM elements
+    correctAnswer.innerText = correctAnswerValue
+    wrongAnswer1.innerText = wrongAnswer1Value
+    wrongAnswer2.innerText = wrongAnswer2Value
+    wrongAnswer3.innerText = wrongAnswer3Value
     questionHeader.innerText = questionText
-    questionArea.appendChild(questionHeader)
+    //appends new DOM elements to appropriate section in HTML
+    easyQuestionArea.appendChild(questionHeader)
+    easyQuestionArea.appendChild(wrongAnswer1)
+    easyQuestionArea.appendChild(wrongAnswer3)
+    easyQuestionArea.appendChild(correctAnswer)
+    easyQuestionArea.appendChild(wrongAnswer2)
   })
 }
 
@@ -42,5 +62,5 @@ easyStartButton.addEventListener('click', async function () {
   let questionsArray = response.data.results
   console.log(questionsArray)
 
-  //mapQuestions(questionsArray)
+  mapQuestions(questionsArray)
 })

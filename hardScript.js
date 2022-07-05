@@ -6,9 +6,7 @@
 let gkBox = document.querySelector('#hard-gk-checkbox')
 let sportsBox = document.querySelector('#hard-sports-checkbox')
 let geoBox = document.querySelector('#hard-geo-checkbox')
-let questionArea = document.querySelector('.question-list')
-let easyStartButton = document.querySelector('#easy-start')
-let mediumStartButton = document.querySelector('#medium-start')
+let hardQuestionArea = document.querySelector('.hard-question-list')
 let hardStartButton = document.querySelector('#hard-start')
 
 //function that determines category
@@ -27,10 +25,30 @@ let getCategory = () => {
 
 const mapQuestions = (questions) => {
   questions.map((currentQuestion) => {
+    //assigns values from API array to usable variables
     let questionText = currentQuestion.question
+    let correctAnswerValue = currentQuestion.correct_answer
+    let wrongAnswer1Value = currentQuestion.incorrect_answers[0]
+    let wrongAnswer2Value = currentQuestion.incorrect_answers[1]
+    let wrongAnswer3Value = currentQuestion.incorrect_answers[2]
+    //creates DOM elements for answers/questions
+    let correctAnswer = document.createElement('p')
+    let wrongAnswer1 = document.createElement('p')
+    let wrongAnswer2 = document.createElement('p')
+    let wrongAnswer3 = document.createElement('p')
     let questionHeader = document.createElement('h3')
+    //assigns API values to the created DOM elements
+    correctAnswer.innerText = correctAnswerValue
+    wrongAnswer1.innerText = wrongAnswer1Value
+    wrongAnswer2.innerText = wrongAnswer2Value
+    wrongAnswer3.innerText = wrongAnswer3Value
     questionHeader.innerText = questionText
-    questionArea.appendChild(questionHeader)
+    //appends new DOM elements to appropriate section in HTML
+    hardQuestionArea.appendChild(questionHeader)
+    hardQuestionArea.appendChild(wrongAnswer1)
+    hardQuestionArea.appendChild(wrongAnswer3)
+    hardQuestionArea.appendChild(correctAnswer)
+    hardQuestionArea.appendChild(wrongAnswer2)
   })
 }
 
@@ -44,5 +62,5 @@ hardStartButton.addEventListener('click', async function () {
   let questionsArray = response.data.results
   console.log(questionsArray)
 
-  //mapQuestions(questionsArray)
+  mapQuestions(questionsArray)
 })
