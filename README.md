@@ -1,8 +1,8 @@
-# General-Trivia
+# Trivia-Time
 
 ## By: Alex Campo
 
----
+## ![Image](https://149744320.v2.pressablecdn.com/wp-content/uploads/2022/02/Space-trivia-1.png)
 
 ### **_Links_**
 
@@ -18,4 +18,6 @@ This is a browser trivia game utilizing the linked [Trivia](https://opentdb.com/
 
 ### **_Credits_**
 
-As external sources are utilized, I will credit them in this section
+As external sources are utilized, I will credit them in this section:
+
+Cover photo pulled from the wollowing location: [Photo](https://alzfdn.org/event/virtual-community-class-trivia-time-all-about-outer-space/)
