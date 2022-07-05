@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trivia!</title>
+  <title>Easy Trivia</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
-    <h1>Trivia Time!</h1>
+    <h1>Welcome to Easy Trivia!</h1>
   </header>
   <main>
+    <main>
+      <div class="option-container">
+        <h3>General Knowledge</h3>
+        <input type="checkbox" id="easy-gk-checkbox">
+        <h3>Sports</h3>
+        <input type="checkbox" id="easy-sports-checkbox">
+        <h3>Geography</h3>
+        <input type="checkbox" id="easy-geo-checkbox">
+      </div>
+      <button class="game-start" id="easy-start">Start Trivia!</button>
+    </main>
     <!-- Keep below in case the section attempt by mapping doesnt work out as planned. Try that first though.
     <div class="question" id="first"></div>
     <div class="question" id="second"></div>
@@ -23,10 +34,10 @@
     <div class="question" id="eigth"></div>
     <div class="question" id="ninth"></div>
     <div class="question" id="tenth"></div> -->
-    <section class="question-list">
+    <section class="easy-question-list">
     </section>
   </main>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="/script.js"></script>
+  <script src="/easyScript.js"></script>
 </body>
 </html>
