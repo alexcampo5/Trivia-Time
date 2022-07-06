@@ -5,37 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Easy Trivia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
   <header>
     <h1>Welcome to Easy Trivia!</h1>
-    <h2 class="scoreboard">Current Score: 0</h2>
   </header>
-  <main>
-    <main>
-      <div class="option-container">
+  <main class="game-container">
+    <div class="scoreboard-container">
+      <h2 class="scoreboard">Current Score: 0</h2>
+    </div>
+    <div class="option-container">
+      <h2>Choose a Category:</h2>
+      <div class="gk-option-container">
         <h3>General Knowledge</h3>
         <input type="checkbox" id="easy-gk-checkbox">
+      </div>
+      <div class="sports-option-container">
         <h3>Sports</h3>
         <input type="checkbox" id="easy-sports-checkbox">
+      </div>
+      <div class="geo-option-container">
         <h3>Geography</h3>
         <input type="checkbox" id="easy-geo-checkbox">
       </div>
       <button class="game-start" id="easy-start">Start Trivia!</button>
-    </main>
-    <!-- Keep below in case the section attempt by mapping doesnt work out as planned. Try that first though.
-    <div class="question" id="first"></div>
-    <div class="question" id="second"></div>
-    <div class="question" id="third"></div>
-    <div class="question" id="fourth"></div>
-    <div class="question" id="fifth"></div>
-    <div class="question" id="sixth"></div>
-    <div class="question" id="seventh"></div>
-    <div class="question" id="eigth"></div>
-    <div class="question" id="ninth"></div>
-    <div class="question" id="tenth"></div> -->
-    <section class="easy-question-list">
+    </div>
+    <section class="easy-question-list question-list">
     </section>
   </main>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

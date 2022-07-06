@@ -4,25 +4,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
   <title>Medium Trivia</title>
 </head>
 <body>
   <h1>Welcome to Medium Trivia</h1>
-  <h2 class="scoreboard">Current Score: 0</h2>
-<main>
-  <div class="option-container">
-    <h3>General Knowledge</h3>
-    <input type="checkbox" id="medium-gk-checkbox">
-    <h3>Sports</h3>
-    <input type="checkbox" id="medium-sports-checkbox">
-    <h3>Geography</h3>
-    <input type="checkbox" id="medium-geo-checkbox">
-  </div>
-  <button class="game-start" id="medium-start">Start Trivia!</button>
-  <section class="medium-question-list">
-  </section>
-</main>
+  <main class="game-container">
+    <div class="scoreboard-container">
+      <h2 class="scoreboard">Current Score: 0</h2>
+    </div>
+    <div class="option-container">
+      <h2>Choose a Category:</h2>
+      <div class="gk-option-container">
+        <h3>General Knowledge</h3>
+        <input type="checkbox" id="medium-gk-checkbox">
+      </div>
+      <div class="sports-option-container">
+        <h3>Sports</h3>
+        <input type="checkbox" id="medium-sports-checkbox">
+      </div>
+      <div class="geo-option-container">
+        <h3>Geography</h3>
+        <input type="checkbox" id="medium-geo-checkbox">
+      </div>
+      <button class="game-start" id="medium-start">Start Trivia!</button>
+    </div>
+    <section class="medium-question-list question-list">
+    </section>
+  </main>
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="/mediumScript.js"></script>

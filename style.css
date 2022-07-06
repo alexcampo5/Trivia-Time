@@ -1,25 +1,49 @@
 body {
-  background-color: aqua;
+  background-color: #797ef6;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  color: #1e2f97;
+  text-align: center;
 }
 
 h1 {
   text-align: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-main {
-  display: grid;
-  grid-template-areas:
-    'a a'
-    'b c'
-    'd d';
+h2{
+  text-align: center;
 }
 
-input {
-  grid-area: a;
+img {
+  height: 30%;
+  width: 30%;
+  margin: auto;
 }
 
-#difficulty-container {
-  grid-area: b;
+.img-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+h3{
+  text-align: center;
+}
+
+.gk-option-container, .sports-option-container, .geo-option-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.difficulty{
+  display: flex;
+  justify-content: space-around;
+}
+
+.game-start, .difficulty-button{
+  height: 100px;
+  width: 100px;
+  border-radius: 10%;
 }
 
 #topic-container {
@@ -34,4 +58,26 @@ input {
 
 .answer-check {
   display: none;
+}
+
+.question-list{
+  margin: auto;
+}
+
+.game-container{
+  display: flex;
+} 
+
+.option-container{
+  position: fixed;
+  top: 0;
+  left: 20;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scoreboard-container{
+  position: fixed;
+  top: 0;
+  right: 20px;
 }

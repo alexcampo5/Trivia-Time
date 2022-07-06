@@ -5,19 +5,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>General Trivia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Welcome to Trivia!</h1>
+    <h1>Welcome to Trivia Time!</h1>
+    <div class="img-container"><img src="https://149744320.v2.pressablecdn.com/wp-content/uploads/2022/02/Space-trivia-1.png"/></div>
+    
   </header>
-  <main>
+  <main class="homepage">
     <!-- <input type="text" placeholder="Name">
     <button>Submit</button> -->
+    <h3>What difficulty would you like to select?</h3>
     <div class="difficulty">
-      <a href="/easyTrivia.html" target="_blank"><button>Easy</button></a>
-      <a href="/mediumTrivia.html" target="_blank"><button>Medium</button></a>
-      <a href="/hardTrivia.html" target="_blank"><button>Hard</button></a>
+      <a href="/easyTrivia.html" target="_blank"><button class="difficulty-button">Easy</button></a>
+      <a href="/mediumTrivia.html" target="_blank"><button class="difficulty-button">Medium</button></a>
+      <a href="/hardTrivia.html" target="_blank"><button class="difficulty-button">Hard</button></a>
     </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="script.js"></script>
