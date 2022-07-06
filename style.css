@@ -7,7 +7,6 @@ body {
 
 h1 {
   text-align: center;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 h2{
@@ -44,16 +43,6 @@ h3{
   height: 100px;
   width: 100px;
   border-radius: 10%;
-}
-
-#topic-container {
-  grid-area: c;
-}
-
-.start-button {
-  grid-area: d;
-  justify-content: center;
-  margin: auto;
 }
 
 .answer-check {
