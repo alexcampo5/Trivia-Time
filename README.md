@@ -21,3 +21,5 @@ This is a browser trivia game utilizing the linked [Trivia](https://opentdb.com/
 As external sources are utilized, I will credit them in this section:
 
 Cover photo pulled from the wollowing location: [Photo](https://alzfdn.org/event/virtual-community-class-trivia-time-all-about-outer-space/)
+
+Array randomizer code idea pulled from [Here](https://javascript.info/task/shuffle)

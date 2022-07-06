@@ -21,12 +21,19 @@ let getCategory = () => {
   }
 }
 
+//function that randomizes the order of an array
+let answerRandomizer = (answers) => {
+  answers.sort(() => Math.random() - 0.5)
+  return answers
+}
+
 //map works displaying on the same page, but throws error when trying to open map on trivia.html. Need to figure out how to connect the two HTML pages
 
 const mapQuestions = (questions) => {
   let score = 0
   questions.map((currentQuestion) => {
     //assigns values from API array to usable variables
+    let answerArray = []
     let questionText = currentQuestion.question
     let correctAnswerValue = currentQuestion.correct_answer
     let wrongAnswer1Value = currentQuestion.incorrect_answers[0]
@@ -50,12 +57,18 @@ const mapQuestions = (questions) => {
     displayWrongResult.innerText = `That's the wrong answer. Try again next time.`
     displayCorrectResult.classList.add('answer-check')
     displayWrongResult.classList.add('answer-check')
+    //Assigning answers to answer array
+    answerArray.push(correctAnswer)
+    answerArray.push(wrongAnswer1)
+    answerArray.push(wrongAnswer2)
+    answerArray.push(wrongAnswer3)
+    let randomizedAnswers = answerRandomizer(answerArray)
+    console.log(answerArray)
     //appends new DOM elements to appropriate section in HTML
     easyQuestionArea.appendChild(questionHeader)
-    easyQuestionArea.appendChild(wrongAnswer1)
-    easyQuestionArea.appendChild(wrongAnswer3)
-    easyQuestionArea.appendChild(correctAnswer)
-    easyQuestionArea.appendChild(wrongAnswer2)
+    randomizedAnswers.forEach((answer) => {
+      easyQuestionArea.appendChild(answer)
+    })
     easyQuestionArea.appendChild(displayCorrectResult)
     easyQuestionArea.appendChild(displayWrongResult)
     //Event Listeners to display right or wrong answers
