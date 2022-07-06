@@ -1,38 +1,37 @@
-body{
+body {
   background-color: aqua;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
-main{
+main {
   display: grid;
-  grid-template-areas: 
-  "a a"
-  "b c"
-  "d d"
-  ;
+  grid-template-areas:
+    'a a'
+    'b c'
+    'd d';
 }
 
-input{
+input {
   grid-area: a;
 }
 
-#difficulty-container{
+#difficulty-container {
   grid-area: b;
 }
 
-#topic-container{
+#topic-container {
   grid-area: c;
 }
 
-.start-button{
+.start-button {
   grid-area: d;
   justify-content: center;
   margin: auto;
 }
 
-.answer-check{
+.answer-check {
   display: none;
 }

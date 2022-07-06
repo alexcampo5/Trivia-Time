@@ -8,6 +8,8 @@ let sportsBox = document.querySelector('#hard-sports-checkbox')
 let geoBox = document.querySelector('#hard-geo-checkbox')
 let hardQuestionArea = document.querySelector('.hard-question-list')
 let hardStartButton = document.querySelector('#hard-start')
+let scoreboard = document.querySelector('.scoreboard')
+let score = 0
 
 //function that determines category
 
@@ -47,7 +49,7 @@ let unencryptText = (phrase) => {
       arrayIterator[i + 2] === 'm' &&
       arrayIterator[i + 3] === 'p'
     ) {
-      arrayIterator.splice(i + 1, 3)
+      arrayIterator.splice(i + 1, 4)
     }
   }
   //This loop decodes quotes
@@ -84,7 +86,6 @@ let disableAnswers = (answers) => {
 //map works displaying on the same page, but throws error when trying to open map on trivia.html. Need to figure out how to connect the two HTML pages
 
 const mapQuestions = (questions) => {
-  let score = 0
   questions.map((currentQuestion) => {
     //assigns values from API array to usable variables
     let answerArray = []
@@ -134,6 +135,7 @@ const mapQuestions = (questions) => {
       displayCorrectResult.classList.remove('answer-check')
       disableAnswers(answerArray)
       score++
+      scoreboard.innerText = `Current Score: ${score}`
     })
     wrongAnswer1.addEventListener('click', () => {
       displayWrongResult.classList.remove('answer-check')
@@ -148,7 +150,6 @@ const mapQuestions = (questions) => {
       disableAnswers(answerArray)
     })
   })
-  return score
 }
 
 //This makes the appropriate API call for difficulty and topic
