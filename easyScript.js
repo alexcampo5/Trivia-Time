@@ -21,10 +21,65 @@ let getCategory = () => {
   }
 }
 
+//This function unencrypts Qs and As from the API
+let unencryptText = (phrase) => {
+  phrase.toString()
+  let arrayIterator = phrase.split('')
+  //this loop decodes 's
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === '#' &&
+      arrayIterator[i + 2] === '0' &&
+      arrayIterator[i + 3] === '3' &&
+      arrayIterator[i + 4] === '9' &&
+      arrayIterator[i + 5] === ';'
+    ) {
+      arrayIterator[i] = `'`
+      arrayIterator.splice(i + 1, 5)
+    }
+  }
+  //this loop decodes & signs
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === 'a' &&
+      arrayIterator[i + 2] === 'm' &&
+      arrayIterator[i + 3] === 'p'
+    ) {
+      arrayIterator.splice(i + 1, 3)
+    }
+  }
+  //This loop decodes quotes
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === 'q' &&
+      arrayIterator[i + 2] === 'u' &&
+      arrayIterator[i + 3] === 'o' &&
+      arrayIterator[i + 4] === 't' &&
+      arrayIterator[i + 5] === ';'
+    ) {
+      arrayIterator[i] = `"`
+      arrayIterator.splice(i + 1, 5)
+    }
+  }
+  phrase = arrayIterator.join('')
+  //console.log(phrase)
+  return phrase
+}
+
 //function that randomizes the order of an array
 let answerRandomizer = (answers) => {
   answers.sort(() => Math.random() - 0.5)
   return answers
+}
+
+//disables the ability to click multiple answers
+let disableAnswers = (answers) => {
+  answers.forEach((answer) => {
+    answer.disabled = true
+  })
 }
 
 //map works displaying on the same page, but throws error when trying to open map on trivia.html. Need to figure out how to connect the two HTML pages
@@ -63,7 +118,11 @@ const mapQuestions = (questions) => {
     answerArray.push(wrongAnswer2)
     answerArray.push(wrongAnswer3)
     let randomizedAnswers = answerRandomizer(answerArray)
-    console.log(answerArray)
+    //The following content decodes info that came in from the API
+    let contentArray = [questionHeader, ...answerArray]
+    contentArray.forEach((phrase) => {
+      phrase.innerText = unencryptText(phrase.innerText)
+    })
     //appends new DOM elements to appropriate section in HTML
     easyQuestionArea.appendChild(questionHeader)
     randomizedAnswers.forEach((answer) => {
@@ -74,16 +133,20 @@ const mapQuestions = (questions) => {
     //Event Listeners to display right or wrong answers
     correctAnswer.addEventListener('click', () => {
       displayCorrectResult.classList.remove('answer-check')
+      disableAnswers(answerArray)
       score++
     })
     wrongAnswer1.addEventListener('click', () => {
       displayWrongResult.classList.remove('answer-check')
+      disableAnswers(answerArray)
     })
     wrongAnswer2.addEventListener('click', () => {
       displayWrongResult.classList.remove('answer-check')
+      disableAnswers(answerArray)
     })
     wrongAnswer3.addEventListener('click', () => {
       displayWrongResult.classList.remove('answer-check')
+      disableAnswers(answerArray)
     })
   })
   return score
@@ -97,7 +160,5 @@ easyStartButton.addEventListener('click', async function () {
     `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=easy&type=multiple`
   )
   let questionsArray = response.data.results
-  console.log(questionsArray)
-
   mapQuestions(questionsArray)
 })
