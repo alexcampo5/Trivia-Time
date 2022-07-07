@@ -54,6 +54,7 @@ let unencryptText = (phrase) => {
       arrayIterator.splice(i + 1, 4)
     }
   }
+
   //This loop decodes quotes
   for (i = 0; i < arrayIterator.length; i++) {
     if (
@@ -65,6 +66,34 @@ let unencryptText = (phrase) => {
       arrayIterator[i + 5] === ';'
     ) {
       arrayIterator[i] = `"`
+      arrayIterator.splice(i + 1, 5)
+    }
+  }
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === 'e' &&
+      arrayIterator[i + 2] === 'a' &&
+      arrayIterator[i + 3] === 'c' &&
+      arrayIterator[i + 4] === 'u' &&
+      arrayIterator[i + 5] === 't' &&
+      arrayIterator[i + 6] === 'e' &&
+      arrayIterator[i + 7] === ';'
+    ) {
+      arrayIterator[i] = `é`
+      arrayIterator.splice(i + 1, 7)
+    }
+  }
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === 'o' &&
+      arrayIterator[i + 2] === 'u' &&
+      arrayIterator[i + 3] === 'm' &&
+      arrayIterator[i + 4] === 'l' &&
+      arrayIterator[i + 5] === ';'
+    ) {
+      arrayIterator[i] = `ö`
       arrayIterator.splice(i + 1, 5)
     }
   }
@@ -119,6 +148,9 @@ const mapQuestions = (questions) => {
     answerArray.push(wrongAnswer2)
     answerArray.push(wrongAnswer3)
     let randomizedAnswers = answerRandomizer(answerArray)
+    answerArray.forEach((answer) => {
+      answer.classList.add('answer-button')
+    })
     //The following content decodes info that came in from the API
     let contentArray = [questionHeader, ...answerArray]
     contentArray.forEach((phrase) => {
