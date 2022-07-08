@@ -4,8 +4,24 @@ body {
   color: #f4e409;
   text-align: center;
   /* background-image: url(https://static.vecteezy.com/system/resources/thumbnails/001/991/202/small/realistic-isolated-neon-sign-of-question-template-decoration-and-covering-on-the-wall-background-vector.jpg);
-  background-size: cover; */
+  background-size: 90%; */
 }
+
+.homepage-body{
+  display: grid;
+  grid-template-rows: 25% 25% 25% 25%;
+  background-image: url(https://static.vecteezy.com/system/resources/thumbnails/001/991/202/small/realistic-isolated-neon-sign-of-question-template-decoration-and-covering-on-the-wall-background-vector.jpg);
+  background-size: 90%;
+}
+
+/*.homepage{
+  display: grid; 
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/001/991/202/small/realistic-isolated-neon-sign-of-question-template-decoration-and-covering-on-the-wall-background-vector.jpg");
+  background-size: cover;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  height: 75%;
+}  */
 
 h1 {
   text-align: center;
@@ -20,6 +36,7 @@ img {
   width: 30%;
   margin: auto;
   border-radius: 15%;
+  opacity: 0;
 }
 
 .img-container{

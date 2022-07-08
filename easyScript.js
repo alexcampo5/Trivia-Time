@@ -94,6 +94,18 @@ let unencryptText = (phrase) => {
       arrayIterator.splice(i + 1, 5)
     }
   }
+  for (i = 0; i < arrayIterator.length; i++) {
+    if (
+      arrayIterator[i] === '&' &&
+      arrayIterator[i + 1] === 'd' &&
+      arrayIterator[i + 2] === 'e' &&
+      arrayIterator[i + 3] === 'g' &&
+      arrayIterator[i + 5] === ';'
+    ) {
+      arrayIterator[i] = `°`
+      arrayIterator.splice(i + 1, 4)
+    }
+  }
   phrase = arrayIterator.join('')
   return phrase
 }
